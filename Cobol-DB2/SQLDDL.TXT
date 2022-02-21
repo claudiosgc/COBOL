@@ -1,0 +1,22 @@
+--CREATE TABLE DEPARTAMENTOS
+--    (CODDEP    CHAR(5)     PRIMARY KEY NOT NULL,
+--     NOMEDEP   VARCHAR(30)             NOT NULL)
+------------------------------------------------------
+--CREATE TABLE FUNCIONARIOS
+--    (CODFUN    CHAR(6)     PRIMARY KEY NOT NULL,
+--     NOMEFUN   VARCHAR(30)             NOT NULL,
+--     DEPTOFUN  CHAR(5)                 NOT NULL,
+--     SALFUN    DECIMAL(8,2)            NOT NULL,
+--     ADMISSFUN DATE                    NOT NULL,
+--     FILHOSFUN SMALLINT                NOT NULL,
+--     EMAILFUN  VARCHAR(30))
+-----------------------------------------------------------
+--CREATE UNIQUE INDEX INDDEP
+--     ON DEPARTAMENTOS(CODDEP);
+--CREATE UNIQUE INDEX INDFUN
+--     ON FUNCIONARIOS(CODFUN);
+---------------------------------------------------
+  ALTER TABLE FUNCIONARIOS
+      ADD FOREIGN KEY(DEPTOFUN)
+      REFERENCES DEPARTAMENTOS
+      ON DELETE RESTRICT
