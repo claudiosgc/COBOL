@@ -1,0 +1,48 @@
+ IDENTIFICATION                       DIVISION.       
+ PROGRAM-ID.                          ALTEVSAM.       
+ AUTHOR.                              CLAUDIO.        
+*----------------------------------------------------*
+ ENVIRONMENT                          DIVISION.       
+ INPUT-OUTPUT                         SECTION.        
+ FILE-CONTROL.                                        
+      SELECT VSAMPAI ASSIGN TO VSAMPAI                
+      ORGANIZATION IS INDEXED                         
+      ACCESS MODE  IS DYNAMIC                         
+      RECORD KEY   IS ARQ-CHAVE                       
+      FILE STATUS  IS FS-ARQVSAM.                     
+*----------------------------------------------------*
+ DATA                                 DIVISION.       
+ FILE                                 SECTION.        
+ FD VSAMPAI.                                          
+ 01 REG-VSAMPAI.    
+     05 ARQ-CHAVE      PIC X(3).                     
+     05 ARQ-DADOS      PIC X(30).                    
+WORKING-STORAGE                      SECTION.        
+77 FS-ARQVSAM        PIC 9(2).                       
+----------------------------------------------------*
+PROCEDURE                            DIVISION.       
+0001-PRINCIPAL.                                      
+     PERFORM 1000-INICIALIZAR                        
+     PERFORM 2000-PROCESSAR                          
+     PERFORM 3000-TERMINO                            
+     DISPLAY 'FINAL DE PROCESSAMENTO'                
+     STOP RUN.                                       
+1000-INICIALIZAR.                                    
+     OPEN I-O VSAMPAI.                               
+      IF FS-ARQVSAM NOT EQUAL ZEROS                  
+         DISPLAY 'ERRO AO ABRIR O ARQUIVO'           
+         PERFORM 3000-TERMINO    
+      END-IF.                                     
+2000-PROCESSAR.                                   
+      ACCEPT ARQ-CHAVE FROM SYSIN                 
+      READ VSAMPAI.                               
+        IF FS-ARQVSAM NOT EQUAL ZEROS             
+           DISPLAY 'ERRO NA LEITURA DO ARQUIVO'   
+           PERFORM 3000-TERMINO                   
+        ELSE                                      
+           ACCEPT ARQ-DADOS FROM SYSIN            
+           REWRITE REG-VSAMPAI                    
+           DISPLAY 'DADOS ALTERADOS:.' REG-VSAMPAI
+        END-IF.                                   
+3000-TERMINO.                                     
+    CLOSE VSAMPAI.                                                                                      

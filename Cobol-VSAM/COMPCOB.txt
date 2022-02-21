@@ -1,0 +1,10 @@
+****** ***************************** Top of Data ******************************
+000001 //EAD912XX JOB 'COMP COB',CLASS=C,MSGCLASS=X,NOTIFY=&SYSUID             
+000002 //*************************************************************         
+000003 //*  JOB UTILIZADO PARA COMPILAR PROGRAMAS COBOL                        
+000004 //*************************************************************         
+000005 // JCLLIB ORDER=GR.GERAL.PROCLIB                                        
+000006 //COBCOMP  EXEC DFHCOBLB,LIB1=GR.EAD912,NOME='EAD912XX',LIB2=GR.GERAL   
+000007 //LKED.SYSIN    DD   *                                                  
+000008   NAME  EAD912XX(R)                                                     
+****** **************************** Bottom of Data ****************************
