@@ -25,7 +25,7 @@
            END-COMPUTE
 
            IF WK-TAMANHO > 0 THEN
-               DISPLAY  'E bom conhecer voce, ' WK-NOME(1:WK-TAMANHO)
+             DISPLAY  'E bom conhecer voce, ' WK-NOME(1:WK-TAMANHO) '.'
            ELSE
                DISPLAY 'NOME EM BRANCO'
            END-IF
