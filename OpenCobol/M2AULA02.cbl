@@ -17,6 +17,7 @@
            DISPLAY 'ENTRE COM NOME: '
            ACCEPT WK-NOME
 
+      *     FUNCTION REVERSE : Inverte o nome
            INSPECT FUNCTION REVERSE (WK-NOME)
                TALLYING WK-TAMANHO FOR LEADING SPACES
 
